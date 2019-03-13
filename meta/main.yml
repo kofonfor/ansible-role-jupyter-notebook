@@ -1,0 +1,7 @@
+dependencies:
+  - role: systemd-service-unit
+    systemd_service_name: jupyter-notebook
+    systemd_service_user: "jupyter"
+    systemd_service_command: "/opt/anaconda3/bin/jupyter"
+    systemd_service_workdir: "/home/jupyter/Notebooks"
+    systemd_service_params: "notebook"

@@ -1,0 +1,12 @@
+- name: create jupyter user
+  user:
+    name: "jupyter"
+    shell: /bin/bash
+    state: present
+
+- name: create a config dir
+  file: dest=/home/jupyter/.jupyter state=directory owner=jupyter group=jupyter mode=0700
+
+- name: put a config file
+  template: src=jupyter_notebook_config.py dest=/home/jupyter/.jupyter/jupyter_notebook_config.py backup=yes
+  notify: systemd restart jupyter-notebook
